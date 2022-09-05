@@ -1,0 +1,17 @@
+[[setting-up-client-tools]]
+Setting up client tools
+~~~~~~~~~~~~~~~~~~~~~~~
+
+In this Lab we will look at how to install the cnvrgv2 CLI tools.
+
+*Installing the Command-line Tools*
+
+After completing this section, you should be able to:
+
+* Locate the binaries for the cnvrgv2 command-line
+interface (cnvrgv2 CLI)
+
+* CLI basic configuration
+
+
+
