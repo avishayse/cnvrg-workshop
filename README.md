@@ -1,7 +1,7 @@
 
 **Welcome to CNVRG-WORKSHOP**
 
-Lab0- Setting up client tools
+Lab0 - Setting up client tools
 
 Lab1 - Projects
 
