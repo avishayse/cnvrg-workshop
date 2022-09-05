@@ -1,30 +1,28 @@
 
 **Welcome to CNVRG-WORKSHOP**
 
-Core Concepts
+Lab0- Setting up client tools
 
-Projects
+Lab1 - Projects
 
-Datasets
+Lab2 - Datasets
 
-AI Library
+Lab3 - Dashboard
 
-Dashboard
+Lab4 - Workspaces
 
-Workspaces
+Lab5 - Experiments
 
-Experiments
+Lab6 - Flows & AI-Library
 
-Flows
+Lab7 - Distributed Jobs
 
-Distributed Jobs
+Lab8 - Serving
 
-Serving
+Lab9 - Apps
 
-Apps
+Lab10 - Organization, Account and Team Settings
 
-Environments
+Lab11 - Compute Resource
 
-Compute
 
-Organization, Account and Team Settings
