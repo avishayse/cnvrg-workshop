@@ -25,4 +25,4 @@ Lab10 - Organization, Account and Team Settings
 
 Lab11 - Compute Resource
 
-
+Lab12 - Connecting with Intel Developer cloud
