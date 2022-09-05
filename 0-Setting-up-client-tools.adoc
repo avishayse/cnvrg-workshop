@@ -14,4 +14,7 @@ interface (cnvrgv2 CLI)
 * CLI basic configuration
 
 
-
+[source,shell]
+----
+❯ cnvrgv2 login -d https://app.a4shpmmmtqrfqcku7cg8ybo.cloud.cnvrg.io -t
+----
