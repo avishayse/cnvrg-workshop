@@ -18,3 +18,5 @@ interface (cnvrgv2 CLI)
 ----
 ❯ cnvrgv2 login -d https://app.a4shpmmmtqrfqcku7cg8ybo.cloud.cnvrg.io -t
 ----
+grab your token from here
+
