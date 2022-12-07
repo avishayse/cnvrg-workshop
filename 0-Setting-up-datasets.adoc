@@ -1,14 +1,41 @@
 *Setting up DataSets*
 
+before we start working on our model let upload our dataset in to cnvrg.
 
-
-
-
-
+First lets pull the datasets from here:
 
 [source,shell]
 ----
-> cnvrgv2 dataset put -n test (name of the dataset)
-----
+> wget http://ai.stanford.edu/~amaas/data/sentiment/aclImdb_v1.tar.gz
+
+> tar -xf aclImdb_v1.tar.gz
 
 ----
+
+Before we want to upload our data we need to make sure we connect.
+
+[source,shell]
+----
+> cnvrgv2 login
+
+Seems you're already logged in
+
+----
+
+lets create a name for our dataset and associate a non empty folder with the new dataset.
+
+[source,shell]
+----
+> cnvrgv2 dataset create -n aclImdb_test
+
+> cnvrgv2 dataset put -n aclImdb
+
+> Please enter a comma separated list of file paths to upload. use . to upload the whole directory: ./aclImdb
+----
+[source,shell]
+----
+Uploading |################################| 210.97 / 210.97 MB
+Successfully uploaded updated files
+
+----
+
