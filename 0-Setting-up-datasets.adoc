@@ -1,14 +1,14 @@
 *Setting up DataSets*
 
+
+
+
+
+
+
 [source,shell]
 ----
 > cnvrgv2 dataset put -n test (name of the dataset)
 ----
-
-Option 2
-
-[source,shell]
-----
-> cnvrgv2 dataset put -n amazon_reviews -f creditcard.csv
 
 ----
