@@ -6,6 +6,17 @@ In this Lab we will look at how to install the cnvrgv2 CLI tools.
 
 *Installing the Command-line Tools*
 
+This operation could be from your local terminal, or by cnvrg Jupyter terminal workspace.
+
+In this section will be creating a workspace and install cnvrgv2 from terminal.
+
+
+[source,shell]
+----
+❯ pip install -U cnvrgv2
+----
+
+
 After completing this section, you should be able to:
 
 * Locate the binaries for the cnvrgv2 command-line
