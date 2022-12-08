@@ -1,0 +1,50 @@
+
+
+
+= Welcome to Cnvrg.io Intel STAG AI WORKSHOP
+Doc Writer <avishay.sebban@intel.com>
+:reproducible:
+:listing-caption: Listing
+:source-highlighter: rouge
+:toc:
+// Uncomment next line to add a title page (or set doctype to book)
+//:title-page:
+// Uncomment next line to set page size (default is A4)
+//:pdf-page-size: Letter
+
+An example of a basic https://asciidoc.org[AsciiDoc] document prepared by {author}.
+
+== Introduction
+
+cnvrg.io delivers an AI OS built to actualize the AI-driven enterprise at scale. cnvrg.io is a compute-agnostic MLOps platform that offers a unified control plane to orchestrate all AI jobs and manage data science workflows at scale. Built by data scientists, for data scientists, cnvrg.io is the only solution that provides a code-first platform to manage, build and automate large-scale models in production.
+With cnvrg you can Manage, Build And Automate The Entire AI/ML Lifecycle From Research To Production With One Unified Solution.
+
+cnvrg.io classic AI and Metaclodu provide everything needed to build and deploy AI on any https://https://cnvrg.io/building-scalable-machine-learning-infrastructure/[Infrastructure]
+	
+
+provides a hybrid-cloud, multi-cloud unified fabric for scalable and secure AI development. The AI ready infrastructure delivers best practices architecture to IT teams with container-based workflows, native Kubernetes and easily blends into existing IT ecosystems. Optimized XPUs in partnerships with Intel, Optimized GPUs in partnerships with NVIDIA, Optimized Storage and Infrastructure in partnership with RedHat, Dell EMC, and NetApp.
+
+A paragraph followed by an unordered list{empty}footnote:[AsciiDoc supports unordered, ordered, and description lists.] with square bullets.footnote:[You may choose from square, disc, and circle for the bullet style.]
+
+[square]
+* item 1
+* item 2
+* item 3
+
+== Main
+
+Here's how you say "`Hello, World!`" in Prawn:
+
+.Create a basic PDF document using Prawn
+[source,ruby]
+----
+require 'prawn'
+
+Prawn::Document.generate 'example.pdf' do
+  text 'Hello, World!'
+end
+----
+
+== Conclusion
+
+That's all, folks!
