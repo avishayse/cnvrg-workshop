@@ -1,15 +1,18 @@
-[[Deploy your model]]
-Deploy your model
-~~~~~~~~~~~~~~~~~~~~~~~
+
+#*Build and Deploy you model*#
 
 Publishing and deploying your models has never been this easy. 
-
-With few clicks you're able to deploy models on Kubernetes clusters quickly and easily.
 
 cnvrg supports a few types of endpoints: web services, kafka streams and batch predictions.
 For web services, cnvrg will automatically encase your code and models in a lightweight REST API. and expose it to the web. It will generate an authentication token to protect the use of the endpoint and automatically build comprehensive model tracking and monitoring tools.
 
-[source,shell]
+Lets write simple python function with no Gunicron and Flask.
+
+[source,python]
 ----
-❯ pip install -U cnvrgv2
+def predict(args):
+	print("got {}".format(args))
+	return args
 ----
+
+image::/misc/endpoint.png[Sunset]
