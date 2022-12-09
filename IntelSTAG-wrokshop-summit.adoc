@@ -31,7 +31,15 @@ A paragraph followed by an unordered list{empty}footnote:[AsciiDoc supports unor
 * item 2
 * item 3
 
-== Main
+== Getting started
+
+- Let’s begin by first logging into cnvrg. The lab assumes you already have access to a cnvrg environment and does not cover deployment. There is a video as well as documentation that can help you setup a cnvrg CORE deployment or sign up for a cloud account at https://cnvrg.io[Cnvrg.io]
+
+- Once logged in go ahead and create the MNIST Example Project at the prpojects page. You can create a new project and call this project anything you want if you desire to follow along but choose your own dataset and challenge. Or you can choose to follow along with this lab example and we will explore the classic MNIST Dataset.
+
+== Datasets
+
+- Verify that your project was created and there are files in the File System.
 
 Here's how you say "`Hello, World!`" in Prawn:
 
@@ -44,7 +52,7 @@ Prawn::Document.generate 'example.pdf' do
   text 'Hello, World!'
 end
 ----
-
+== Projects
 == Conclusion
 
 That's all, folks!
