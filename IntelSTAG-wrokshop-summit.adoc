@@ -37,6 +37,33 @@ A paragraph followed by an unordered list{empty}footnote:[AsciiDoc supports unor
 
 - Once logged in go ahead and create the MNIST Example Project at the prpojects page. You can create a new project and call this project anything you want if you desire to follow along but choose your own dataset and challenge. Or you can choose to follow along with this lab example and we will explore the classic MNIST Dataset.
 
+image::/misc/example_proj.png[Sunset]
+
+image::/misc/exmaple_proj2.png[Sunset]
+
+- Verify that your project was created and there are files in the File System.
+
+image::/misc/files.png[Sunset]
+
+- Now we can begin exploring the project.
+
+== Projects
+
+cnvrg simplifies ML workflows from end to end
+
+image::/misc/icons_projects.png[Sunset] 
+
+
+For starters, a cnvrg project is the space in which you hold everything related to a specific machine learning problem or domain. You work and collaborate on projects.
+
+A project can include files (code), *workspaces*, *experiments*, *flows*, *apps* and dashboards, *serving*, *artifacts*, *models* and even research interactive *papers*.
+
+image::/misc/main-projects.png[Sunset]
+
+Create New Projects, Start from load yuor files into the platfrom and also creating new files, or import from github!
+
+Read more about project in the docs https://app.cnvrg.io/docs/core_concepts/projects.html#creating-a-project[here]
+
 == Datasets
 
 - Verify that your project was created and there are files in the File System.
@@ -52,7 +79,7 @@ Prawn::Document.generate 'example.pdf' do
   text 'Hello, World!'
 end
 ----
-== Projects
+
 == Conclusion
 
 That's all, folks!
