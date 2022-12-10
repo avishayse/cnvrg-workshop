@@ -41,15 +41,15 @@ A paragraph followed by an unordered list{empty}footnote:[AsciiDoc supports unor
 
 - Let’s begin by first logging into cnvrg. The lab assumes you already have access to a cnvrg environment and does not cover deployment. There is a video as well as documentation that can help you setup a cnvrg CORE deployment or sign up for a cloud account at https://cnvrg.io[Cnvrg.io]
 
-- Once logged in go ahead and create the MNIST Example Project at the prpojects page. You can create a new project and call this project anything you want if you desire to follow along but choose your own dataset and challenge. Or you can choose to follow along with this lab example and we will explore the classic MNIST Dataset.
+- Once logged in go ahead and create the, ML Pipeline with the LendingClub dataset Example Project at the prpojects page. You can create a new project and call this project anything you want if you desire to follow along but choose your own dataset. 
 
 image::/misc/example_proj.png[Sunset]
 
-image::/misc/exmaple_proj2.png[Sunset]
+image::/misc/lc.png[Sunset]
 
 - Verify that your project was created and there are files in the File System.
 
-image::/misc/files.png[Sunset]
+image::/misc/lc-files.png[Sunset]
 
 - Now we can begin exploring the project.
 
@@ -61,11 +61,13 @@ image::/misc/icons_projects.png[Sunset]
 
 For starters, a cnvrg project is the space in which you hold everything related to a specific machine learning problem or domain. You work and collaborate on projects.
 
+image::/misc//main-projects.png[Sunset]
+
 A project can include files (code), https://app.cnvrg.io/docs/core_concepts/workspaces.html[workspaces], https://app.cnvrg.io/docs/core_concepts/experiments.html[experiments], https://app.cnvrg.io/docs/core_concepts/flows.html[flows],  https://app.cnvrg.io/docs/core_concepts/apps.html[apps] and https://app.cnvrg.io/docs/core_concepts/dashboard.html#summary[dashboard],  https://app.cnvrg.io/docs/core_concepts/endpoints.html[serving], *artifacts*, *models* and even research interactive *papers*.
 
-image::/misc/lc.png[Sunset]
-
 Create New Projects, Start from load yuor files into the platfrom and also creating new files, or import from github!
+
+image::/misc//projects00.png[Sunset]
 
 Read more about project in the docs https://app.cnvrg.io/docs/core_concepts/projects.html#creating-a-project[here]
 
@@ -73,11 +75,33 @@ Read more about project in the docs https://app.cnvrg.io/docs/core_concepts/proj
 
 cnvrg has inline support for rendering a viewing multiple file types
 
-cnvrg offers out-of-the-box version control for your project. With the simple drag-and-drop interface or the cnvrg CLI, you can have your project files (code, artifacts) automatically tracked and versioned.
+cnvrg offers out-of-the-box version control for your project. With the simple drag-and-drop interface or the  https://app.cnvrg.io/docs/core_concepts/python_sdk_v2.html[cnvrgv2] CLI, you can have your project files (code, artifacts) automatically tracked and versioned.
+
+image::/misc//lc-dd.png[Sunset]
 
 cnvrg will automatically create new commits for experiments and workspaces syncs and keep track of all your projects' files. When connected to git, only the designated *output* folder will be synced and managed by cnvrg.
 
+image::/misc//lc-files-commits.png[Sunset]
+
 == Workspaces
+
+cnvrg.io has built-in support for JupyterLab, JupterLab on Spark, R Studio and Visual Studio Code to run on the platfrom. as well the ability to run code on your local IDE using the https://app.cnvrg.io/docs/core_concepts/python_sdk_v2.html[cnvrgv2-SDK] library.
+
+A cnvrg workspace is an interactive environment for developing and running code.
+
+Create your first workspace
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Next go ahead and launch your first workspace, click *“Start a Workspace”*
+  . Enter *title* name
+  . select your preferable *compute template* we go with 1cpu and 2G
+  . Select the relenat *dataset* "lending-club"
+  . select relevant *image*, cnvrg provide out of the box images, in this case *cnvrgv5* image.
+  . hit the *start* button
+
+image::/misc//workspace.png[Sunset]
+
+You can explore the files and even start editing and modifying them if you wish at this point.
 
 == Datasets
 
