@@ -7,12 +7,18 @@ Doc Writer <avishay.sebban@intel.com>
 :listing-caption: Listing
 :source-highlighter: rouge
 :toc:
+
 // Uncomment next line to add a title page (or set doctype to book)
 //:title-page:
 // Uncomment next line to set page size (default is A4)
 //:pdf-page-size: Letter
 
-An example of a basic https://asciidoc.org[AsciiDoc] document prepared by {author}.
+Workshop duration 45-55 min {empty}footnote:[AsciiDoc supports unordered, ordered, and description lists.]
+
+[square]
+* 15 overview
+* 30 min hands-on
+
 
 == Introduction
 
@@ -53,16 +59,25 @@ cnvrg simplifies ML workflows from end to end
 
 image::/misc/icons_projects.png[Sunset] 
 
-
 For starters, a cnvrg project is the space in which you hold everything related to a specific machine learning problem or domain. You work and collaborate on projects.
 
-A project can include files (code), *workspaces*, *experiments*, *flows*, *apps* and dashboards, *serving*, *artifacts*, *models* and even research interactive *papers*.
+A project can include files (code), https://app.cnvrg.io/docs/core_concepts/workspaces.html[workspaces], https://app.cnvrg.io/docs/core_concepts/experiments.html[experiments], https://app.cnvrg.io/docs/core_concepts/flows.html[flows],  https://app.cnvrg.io/docs/core_concepts/apps.html[apps] and https://app.cnvrg.io/docs/core_concepts/dashboard.html#summary[dashboard],  https://app.cnvrg.io/docs/core_concepts/endpoints.html[serving], *artifacts*, *models* and even research interactive *papers*.
 
-image::/misc/main-projects.png[Sunset]
+image::/misc/lc.png[Sunset]
 
 Create New Projects, Start from load yuor files into the platfrom and also creating new files, or import from github!
 
 Read more about project in the docs https://app.cnvrg.io/docs/core_concepts/projects.html#creating-a-project[here]
+
+== Files
+
+cnvrg has inline support for rendering a viewing multiple file types
+
+cnvrg offers out-of-the-box version control for your project. With the simple drag-and-drop interface or the cnvrg CLI, you can have your project files (code, artifacts) automatically tracked and versioned.
+
+cnvrg will automatically create new commits for experiments and workspaces syncs and keep track of all your projects' files. When connected to git, only the designated *output* folder will be synced and managed by cnvrg.
+
+== Workspaces
 
 == Datasets
 
