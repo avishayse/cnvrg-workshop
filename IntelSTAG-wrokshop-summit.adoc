@@ -14,14 +14,20 @@ Doc Writer <avishay.sebban@intel.com>
 //:pdf-page-size: Letter
 
 
-== Registration and Introduction
+== Registration
+
+To log-in to cnvrg.io metacloud, You should get invite. Please check your mail.
 
 Workshop duration 45-55 min
+
+Agenda:
 
 [square]
 * 5 min - intro presentation
 * 10 min - Demo-overview
 * 30 min - hands-on
+
+== Introduction
 
 cnvrg.io delivers an AI OS built to actualize the AI-driven enterprise at scale. cnvrg.io is a compute-agnostic MLOps platform that offers a unified control plane to orchestrate all AI jobs and manage data science workflows at scale. Built by data scientists, for data scientists, cnvrg.io is the only solution that provides a code-first platform to manage, build and automate large-scale models in production.
 With cnvrg you can Manage, Build And Automate The Entire AI/ML Lifecycle From Research To Production With One Unified Solution.
@@ -94,6 +100,8 @@ Experiments are the core of every machine learning project. When building a mode
 
 To run an experiment via the web, go to your project, click the Experiments tab and click New Experiment.
 
+image::/misc//expriment0.png[Sunset]
+
 cnvrg allows you to run experiments.
 An experiment can be any executable, written in any language: Python, R, Java, Scala and more. It can also be an existing Jupyter notebook.
 
@@ -149,20 +157,19 @@ In this lab, we will create a simple flow with two tasks (Task A and Task B). We
 
 Now, we will create the two tasks scripts, and upload them to cnvrg.
 
-- Task A: Python script that creates artifacts, parameters and metrics
+Task A: Python script that creates artifacts, parameters and metrics
 
-Parameters and Metrics:
-
-- `random_accuracy`- we will use the `log_param` Python SDK method to track a random value.
-- `partition` - when a user sets a parameter when running a task or experiment, cnvrg automatically logs it.
-- `random-chart` - a chart created with 100 random metrics using the Python SDK.
 
 To create the file for Task A:
 
 . Go to the *Files* tab of your project.
 . Click *New File*.
-. Name the file *task_a.py*.
-. In the code editor, paste the following code, and then click Submit:
+
+image::/misc//ep-files.png[Sunset]
+
+3 . Name the file `task_a.py`.
+
+4 . In the code editor, paste the following code, and then click Submit:
 
 [source,python]
 ----
@@ -218,13 +225,18 @@ file.close()
 
 image::/misc//create-file1.png[Sunset]
 
-- Task B: Python script that reads artifacts & parameters from Task A
+* Task B: Python script that reads artifacts & parameters from Task A
+
 
 * To create the file for Task B:
 . Go to the *Files* tab of your project.
 . Click *New File*
-. Name the file `task_b.py`.
-. In the code editor, paste the following code, and then click *Submit*:
+
+image::/misc//ep-files.png[Sunset]
+
+3 . Name the file `task_b.py`.
+
+4 . In the code editor, paste the following code, and then click *Submit*:
 
 [source,python]
 ----
