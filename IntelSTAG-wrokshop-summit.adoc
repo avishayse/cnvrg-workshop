@@ -13,7 +13,7 @@ Doc Writer <avishay.sebban@intel.com>
 // Uncomment next line to set page size (default is A4)
 //:pdf-page-size: Letter
 
-Workshop duration 45-55 min {empty}footnote:[AsciiDoc supports unordered, ordered, and description lists.]
+Workshop duration 45-55 min {empty}footnote:
 
 [square]
 * 15 overview
@@ -30,7 +30,7 @@ cnvrg.io classic AI and Metaclodu provide everything needed to build and deploy 
 
 provides a hybrid-cloud, multi-cloud unified fabric for scalable and secure AI development. The AI ready infrastructure delivers best practices architecture to IT teams with container-based workflows, native Kubernetes and easily blends into existing IT ecosystems. Optimized XPUs in partnerships with Intel, Optimized GPUs in partnerships with NVIDIA, Optimized Storage and Infrastructure in partnership with RedHat, Dell EMC, and NetApp.
 
-A paragraph followed by an unordered list{empty}footnote:[AsciiDoc supports unordered, ordered, and description lists.] with square bullets.footnote:[You may choose from square, disc, and circle for the bullet style.]
+A paragraph followed by an unordered list{empty}footnote:
 
 [square]
 * item 1
@@ -71,13 +71,41 @@ image::/misc//projects00.png[Sunset]
 
 Read more about project in the docs https://app.cnvrg.io/docs/core_concepts/projects.html#creating-a-project[here]
 
+== Datasets
+
+Cnvrg datasets allow you to create, load, delete and version any kind of file automatically and easily. So you can interact with them later on in your cnvrg-IDE or local and experimnets,Flow etc. Your data is basically what do you define it to be, It can be a single file, it can be a folder structure containing thousands of files, and really what you define it to be.
+
+You can drag and drop your files, and if this large dataset you can use our https://app.cnvrg.io/docs/core_concepts/python_sdk_v2.html[Setting up cnvrg2 cli] to upload your files. see exmaple how to https://github.com/avishayse/cnvrg-workshop/blob/main/0-Setting-up-client-tools.adoc[1.Setting up cnvrg2 cli], https://github.com/avishayse/cnvrg-workshop/blob/main/1-Setting-up-datasets.adoc[2.upload the files here]
+
+Bring your own data
+~~~~~~~~~~~~~~~~~~~
+
+- Lets create new data bucket and add the file.
+
+  . Download this csv file from [here]
+
+Data versioning
+~~~~~~~~~~~~~~
+
+one of the important things especially in data is the: *Data versioning*
+
+Cnvrg data versioning control allows you to track your data every time it is changing.  That means that whenever you add, update, delete files to your datasets. cnvrg do commits for those changes.
+
+image::/misc//datasets.png[Sunset]
+
+cnvrg datasets uses an object store for the backend and allows you to host any kind of file with no limit to size or quantity, and of course you can always Isolate the data among other teams. 
+
+
 == Files
 
-cnvrg has inline support for rendering a viewing multiple file types
+Back to lending club project - cnvrg has inline support for rendering a viewing multiple file types
 
 cnvrg offers out-of-the-box version control for your project. With the simple drag-and-drop interface or the  https://app.cnvrg.io/docs/core_concepts/python_sdk_v2.html[cnvrgv2] CLI, you can have your project files (code, artifacts) automatically tracked and versioned.
 
 image::/misc//lc-dd.png[Sunset]
+
+Drop your first file localy on cnvrg
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 cnvrg will automatically create new commits for experiments and workspaces syncs and keep track of all your projects' files. When connected to git, only the designated *output* folder will be synced and managed by cnvrg.
 
@@ -92,7 +120,7 @@ A cnvrg workspace is an interactive environment for developing and running code.
 Create your first workspace
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- Next go ahead and launch your first workspace, click *“Start a Workspace”*
+- Go ahead and launch your first workspace, click *“Start a Workspace”*
   . Enter *title* name
   . select your preferable *compute template* we go with 1cpu and 2G
   . Select the relenat *dataset* "lending-club"
@@ -103,22 +131,39 @@ image::/misc//workspace.png[Sunset]
 
 You can explore the files and even start editing and modifying them if you wish at this point.
 
-== Datasets
+== Experiments
 
-- Verify that your project was created and there are files in the File System.
+To run an experiment via the web, go to your project, click the Experiments tab and click New Experiment.
 
-Here's how you say "`Hello, World!`" in Prawn:
+cnvrg allows you to run experiments.
+An experiment can be any executable, written in any language: Python, R, Java, Scala and more. It can also be an existing Jupyter notebook.
 
-.Create a basic PDF document using Prawn
-[source,ruby]
-----
-require 'prawn'
+Run your first experiments
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+- Go ahead and launch your first workspace, click *“New Experiment”*
 
-Prawn::Document.generate 'example.pdf' do
-  text 'Hello, World!'
-end
-----
+== Flows
+
+Build your own flow
+^^^^^^^^^^^^^^^^^^^
+
+== Serving Model / Deployments
+
+Deploy your model
+^^^^^^^^^^^^^^^^^
 
 == Conclusion
 
 That's all, folks!
+
+== LINKS + RESOURCES
+
+* cnvrg Tutorials
+
+* Documentation
+
+* Cnvrg Homepage
+
+* Case Studies
+
+* Cnvrg Blogs
