@@ -13,15 +13,14 @@ Doc Writer <avishay.sebban@intel.com>
 // Uncomment next line to set page size (default is A4)
 //:pdf-page-size: Letter
 
+== Introduction
+
 Workshop duration 45-55 min
 
 [square]
 * 5 min - intro presentation
 * 10 min - Demo-overview
 * 30 min - hands-on
-
-
-== Introduction
 
 cnvrg.io delivers an AI OS built to actualize the AI-driven enterprise at scale. cnvrg.io is a compute-agnostic MLOps platform that offers a unified control plane to orchestrate all AI jobs and manage data science workflows at scale. Built by data scientists, for data scientists, cnvrg.io is the only solution that provides a code-first platform to manage, build and automate large-scale models in production.
 With cnvrg you can Manage, Build And Automate The Entire AI/ML Lifecycle From Research To Production With One Unified Solution.
@@ -30,13 +29,6 @@ cnvrg.io classic AI and Metaclod provide everything needed to build and deploy A
 	
 
 provides a hybrid-cloud, multi-cloud unified fabric for scalable and secure AI development. The AI ready infrastructure delivers best practices architecture to IT teams with container-based workflows, native Kubernetes and easily blends into existing IT ecosystems. Optimized XPUs in partnerships with Intel, Optimized GPUs in partnerships with NVIDIA, Optimized Storage and Infrastructure in partnership with RedHat, Dell EMC, and NetApp.
-
-A paragraph followed by an unordered 
-
-[square]
-* item 1
-* item 2
-* item 3
 
 == Getting started
 
@@ -76,14 +68,17 @@ Read more about project in the docs https://app.cnvrg.io/docs/core_concepts/proj
 
 Cnvrg datasets allow you to create, load, delete and version any kind of file automatically and easily. So you can interact with them later on in your cnvrg-IDE or local laptop and and later on on your experimnets,Flow etc. Your data is basically what do you define it to be, It can be a single file, binary file, it can be a folder structure containing thousands of files, and really what you define it to be.
 
-You can drag and drop your files, and if this large dataset you can use our https://app.cnvrg.io/docs/core_concepts/python_sdk_v2.html[Setting up cnvrg2 cli] to upload your files. see exmaple how to https://github.com/avishayse/cnvrg-workshop/blob/main/0-Setting-up-client-tools.adoc[1.Setting up cnvrg2 cli], https://github.com/avishayse/cnvrg-workshop/blob/main/1-Setting-up-datasets.adoc[2.upload the files here]
+You can drag and drop your files, and if this large dataset you can use our https://app.cnvrg.io/docs/core_concepts/python_sdk_v2.html[Setting up cnvrg2 cli] to upload your files. 
+see exmaple how to https://github.com/avishayse/cnvrg-workshop/blob/main/0-Setting-up-client-tools.adoc[1.Setting up cnvrg2 cli], https://github.com/avishayse/cnvrg-workshop/blob/main/1-Setting-up-datasets.adoc[2.upload the files here]
 
 Bring your own data
 ~~~~~~~~~~~~~~~~~~~
 
 - Lets create new data bucket and add the file.
 
-  . Download this csv file from [here]
+  . Download this csv file from https://data.boston.gov/dataset/1391d199-08bb-4bd7-a2ce-ceabf4ad4f91/resource/c13199bf-49a1-488d-b8e9-55e49523ef81/download/tmpkhwk2w32.csv[here]
+  . Drag the file into the browser, or by click to browse
+  . once the file is up, click upload.
 
 Data versioning
 ~~~~~~~~~~~~~~
@@ -104,6 +99,7 @@ Back to lending club project - cnvrg has inline support for rendering a viewing 
 cnvrg offers out-of-the-box version control for your project. With the simple drag-and-drop interface or the  https://app.cnvrg.io/docs/core_concepts/python_sdk_v2.html[cnvrgv2] CLI, you can have your project files (code, artifacts) automatically tracked and versioned.
 
 image::/misc//lc-dd.png[Sunset]
+
 
 Drop your first file localy on cnvrg
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
