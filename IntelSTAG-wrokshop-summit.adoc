@@ -74,7 +74,7 @@ Read more about project in the docs https://app.cnvrg.io/docs/core_concepts/proj
 
 == Datasets
 
-Cnvrg datasets allow you to create, load, delete and version any kind of file automatically and easily. So you can interact with them later on in your cnvrg-IDE or local and experimnets,Flow etc. Your data is basically what do you define it to be, It can be a single file, it can be a folder structure containing thousands of files, and really what you define it to be.
+Cnvrg datasets allow you to create, load, delete and version any kind of file automatically and easily. So you can interact with them later on in your cnvrg-IDE or local laptop and and later on on your experimnets,Flow etc. Your data is basically what do you define it to be, It can be a single file, binary file, it can be a folder structure containing thousands of files, and really what you define it to be.
 
 You can drag and drop your files, and if this large dataset you can use our https://app.cnvrg.io/docs/core_concepts/python_sdk_v2.html[Setting up cnvrg2 cli] to upload your files. see exmaple how to https://github.com/avishayse/cnvrg-workshop/blob/main/0-Setting-up-client-tools.adoc[1.Setting up cnvrg2 cli], https://github.com/avishayse/cnvrg-workshop/blob/main/1-Setting-up-datasets.adoc[2.upload the files here]
 
