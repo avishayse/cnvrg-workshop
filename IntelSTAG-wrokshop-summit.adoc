@@ -77,7 +77,6 @@ Create your first workspace
 - Go ahead and launch your first workspace, click *“Start a Workspace”*
   . Enter *title* name
   . select your preferable *compute template* we go with 1cpu and 2G
-  . Select the relenat *dataset* "lending-club"
   . select relevant *image*, cnvrg provide out of the box images, in this case *cnvrgv5* image.
   . hit the *start* button
 
@@ -102,25 +101,368 @@ Running an experiment
 ^^^^^^^^^^^^^^^^^^^^^
 
 - On your project’s sidebar, click Experiments, then click New Experiment. In the panel that appears:
-  . For *Command to Execute*, type in or select python3 train.py.
+  . For *Command to Execute*, type in or select `python3 train.py`.
   . For *Environment* > *Compute*, select large.
   . Click *Run*.
-    
-image::/misc//exp.png[Sunset]
+
+image::/misc//simple_exp.png[Sunset]
+
+Running hyperparameter optimization - [red]#*(Optional not must)*#
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Our single training experiment is now complete. It looks pretty good, but maybe if we changed some of our parameters we could end up with a stronger model. Let’s try a *grid search* to find out.
+
+. Click *New Experiment*. In the panel that appears:
+. For *Command to Execute*, type in or select `python3 train.py`
+. Click on the *Parameters* subsection. We will now add two parameters for the grid search
+[square]
+1. Epochs: 
+ * Type: Discrete
+ * Key: epochs
+ * Values: 6,8,10
+2. Batch Size (Click add to insert another parameter):
+  * Type: Categorical
+  * Key: batch_size
+  * Values: 64,128
+3. Set *Environment* > *Compute* as X-large.
+
+Click *Run*.
+
+image::/misc//hyper.png[Sunset]
+cnvrg will set up 6 discrete experiments and run them all using the hyperparameters as entered.
+
+image::/misc//hyper2.png[Sunset]
+
+- Visualizing and comparing
+
+After all of our experiments have run successfully, we can now compare and choose the best performing model. Cnvrg makes this really easy with the built-in visualization and comparison tools.
+
+image::/misc//compare.png[Sunset]
 
 == Flows
 
-Build your own flow
-^^^^^^^^^^^^^^^^^^^
+cnvrg provides you with an easy way to build machine learning pipelines called flows). With cnvrg flows, you can build DAG pipelines where artifacts and parameters automatically move between tasks.
+
+Simple Flow with Two Tasks
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In this lab, we will create a simple flow with two tasks (Task A and Task B). We will build the pipeline such that artifacts and parameters from Task A will be automatically available in Task B.
+
+Now, we will create the two tasks scripts, and upload them to cnvrg.
+
+- Task A: Python script that creates artifacts, parameters and metrics
+
+Parameters and Metrics:
+
+- `random_accuracy`- we will use the `log_param` Python SDK method to track a random value.
+- `partition` - when a user sets a parameter when running a task or experiment, cnvrg automatically logs it.
+- `random-chart` - a chart created with 100 random metrics using the Python SDK.
+
+To create the file for Task A:
+
+. Go to the *Files* tab of your project.
+. Click *New File*.
+. Name the file *task_a.py*.
+. In the code editor, paste the following code, and then click Submit:
+
+[source,python]
+----
+"""
+Task A python file
+"""
+from PIL import Image, ImageDraw
+from cnvrg import Experiment 
+import time
+import random
+import argparse                                                                 
+
+parser = argparse.ArgumentParser(description='Task A example in cnvrg Flow')         
+parser.add_argument('--partition', help='partition', default='1') 
+args = parser.parse_args()                                                      
+
+partition = int(args.partition)
+
+# Initialize experiment
+e = Experiment()
+
+# Log parameter (single value) that can be accessed in further tasks
+random_accuracy = random.random()
+print('Creating random accuracy tag', random_accuracy)
+e.log_param('random_accuracy', random_accuracy)
+
+# Log metric (chart) that will be automatically visualized in the task's 
+# experiment page
+print('Creating chart: random-chart')
+for i in range(100):
+    print(str(i) + '/ 100')
+    e.log_metric('random-chart', [random.random()])
+    time.sleep(0.1)
+
+
+# Create artifacts and save to disk so it will be automatically stored by cnvrg
+# and available in the next tasks
+
+# Create image file
+print('Creating image file')
+img = Image.new('RGB', (100, 30), color = (73, 109, 137))
+d = ImageDraw.Draw(img)
+d.text((10,10), "Hello World!", fill=(255,255,0))
+img.save('task-a-image-artifact.png')
+
+# Create text file
+print('Creating text file')
+file = open("task-a-text-artifact.txt", "w") 
+file.write("Text file generated in Task\nPartition: " + str(partition)) 
+file.close() 
+ 
+----
+
+image::/misc//create-file1.png[Sunset]
+
+- Task B: Python script that reads artifacts & parameters from Task A
+
+* To create the file for Task B:
+. Go to the *Files* tab of your project.
+. Click *New File*
+. Name the file `task_b.py`.
+. In the code editor, paste the following code, and then click *Submit*:
+
+[source,python]
+----
+from cnvrg import Experiment
+import argparse
+import os
+
+parser = argparse.ArgumentParser(description='Task B example in cnvrg Flow')         
+parser.add_argument('--task_a_accuracy', help='accuracy', default='1') 
+args = parser.parse_args()                                                      
+
+accuracy = float(args.task_a_accuracy)
+    
+# Print previous task accuracy (passed as parameter with `{{ }}`)
+print('Previous task accuracy: ', accuracy)
+
+# Read parameter from previous task using environment variables
+# https://app.cnvrg.io/docs/core_concepts/flows.html#tags-parameters-flow
+print('Previous task partitions: ', os.environ['CNVRG_TASK_A_PARTITION'])
+
+# Read & print text file from previous task
+f = open('/input/task_a/task-a-text-artifact.txt')
+print("task_a's text file contents:")
+print(f.read())
+f.close()
+----
+
+
+image::/misc//create-file2.png[Sunset]
+
+Task B represents a simple Python script that during execution, reads the artifacts and parameters from Task A.
+
+- Using parameters as inputs
+Task B expects an input argument `task_a_accuracy`. When defining the flow, we will pass a
+
+`{{ task_a.random_accuracy }}`
+
+to the parameter `task_a_accuracy`. cnvrg will parse this template tag and convert it to a value automatically.
+
+Using parameters as environment variables
+Task B will read the `partition` parameter created in Task A using the environment variable `task_a_partition` that was generated automatically by cnvrg during the flow execution.
+
+*Creating the Flow*
+
+Now that we have created the tasks scripts, we can create the flow. To make it even easier, we've prepared a flow YAML that can just copy paste to get your flow ready.
+
+* To create the flow:
+. Go to the *Flows* tab of your project.
+. Click *New Flow*.
+. Click the `YAML` button in the upper header of the Flow window.
+
+image::/misc//flow-yaml.png[Sunset]
+4 . Copy and paste the following snippet in the YAML editor.
+
+5 . Click *Save*
+
+[source,yaml]
+----
+---
+flow: 2 Task Flow
+recurring: 
+next_run_utc: 
+tasks:
+- input: python3 task_a.py
+  params:
+  - key: partition
+    type: discrete
+    min: 0
+    max: 0
+    scale: linear
+    steps: 0
+    values:
+    - '1'
+  computes:
+  - IDC.small
+  image: cnvrg:v5.0
+  description: task_a
+  type: exec
+  git_commit: 
+  git_branch: 
+  mount_folders: []
+  icon: python
+  output_dir: 
+  confirmation: false
+  standalone_mode: false
+  notify_on_error: false
+  notify_on_success: false
+  emails: []
+  objective: 
+  objective_goal: 
+  objective_function: min
+  max_jobs: -1
+  parallel_jobs: -1
+  algorithm: GridSearch
+  queue_slug: lyjladbzzgxmz48jgdek
+  title: task_a
+  top: 181
+  left: 336
+  conditions: []
+  commit: 472b07b9fcf2c2451e8781e944bf5f77cd8457c8
+- input: python3 task_b.py
+  params:
+  - key: task_a_accuracy
+    type: discrete
+    min: 0
+    max: 0
+    scale: linear
+    steps: 0
+    values:
+    - "{{ task_a.random_accuracy }}"
+  computes:
+  - IDC.small
+  image: cnvrg:v5.0
+  description: task_b
+  type: exec
+  git_commit: 
+  git_branch: 
+  mount_folders: []
+  icon: python
+  output_dir: 
+  confirmation: false
+  standalone_mode: false
+  notify_on_error: false
+  notify_on_success: false
+  emails: []
+  objective: 
+  objective_goal: 
+  objective_function: min
+  max_jobs: -1
+  parallel_jobs: -1
+  algorithm: GridSearch
+  queue_slug: lyjladbzzgxmz48jgdek
+  title: task_b
+  top: 183
+  left: 876
+  conditions: []
+  commit: 472b07b9fcf2c2451e8781e944bf5f77cd8457c8
+relations:
+- from: task_a
+  to: task_b
+
+
+----
+
+Now your flow should be updated, and look like the image below:
+
+
+image::/misc//2-task-flow.png[Sunset]
+
+- Running the Flow
+
+We're all set to run the flow. Click the *Play* button (blue arrow). A popup should appear.
+
+Confirm you want to run the flow by clicking *Run*.
+
+image::/misc//run-flow.png[Sunset]
+
+This was just a simple example, demonstrating the basic principles of flows. Of course, the possibilities are limitless! You can build from this simple example into truly complex end-to-end machine learning pipelines, incorporating code, data, production services and AI Library's components.
+
 
 == Serving Model / Deployments
 
 Deploy your model
 ^^^^^^^^^^^^^^^^^
 
+- Let’s deploy the model as a REST API:
+. First, we need to create a simple python function.
+. Navigate to *Files* section and create new python file
+
+image::/misc//ep-files.png[Sunset]
+
+pase the code inside the new file and then *commit* the file.
+
+[source,python]
+----
+def predict(args):
+	print("got {}".format(args))
+	return args
+----
+
+image::/misc//ep-files2.png[Sunset]
+
+Navigate to the *Serving* tab in your project.
+
+3 . Click *Web Service*.
+
+The *New Endpoint* pane appears:
+
+image::/misc//end-point.png[Sunset]
+
+4 . Provide details for the following fields:
+
+* Title > Choose your own!
+* Compute > Choose `IDC.medium`.
+* File > In this case, select predict.py.
+* Function > In this case, specify: predict.
+* Commit > Make sure to choose the commit made by our previous successful experiment!
+
+5 . Click *Deploy Endpoint*.
+
+cnvrg takes your simple-function (dependencies, code) and wraps it with a thin and scalable REST API.
+
+Querying the model
+^^^^^^^^^^^^^^^^^^
+
+Congratulations, your endpoint is live. Let's use it. Your endpoint can be added to applications or reached directly from any machine (of course you need the password/token, so it is entirely secure)
+
+For this example we'll demonstrate reaching the live endpoint:
+
+* directly from your `terminal` and sending in our very own review for classification.
+
+. go to *live endpoint's page*
+
+image::/misc//live-ep.png[Sunset]
+
+2 . Click the live endpoint
+
+3 . Scroll all the way to the buttom.
+
+image::/misc//ep-query.png[Sunset]
+
+In this case, make sure you click the Curl tab. Then click Copy to Clipboard.
+
+Now open your favorite command-line interface on your machine and paste the code directly in your terminal.
+
+image::/misc//terminal.png[Sunset]
+
+Or, query from the ui.
+
+image::/misc//serving-ui.png[Sunset]
+
+Beyond deploying the model into production, cnvrg also provides powerful tools that allow you to monitor the status of your endpoint.
+
 == Conclusion
 
-That's all, folks!
+That's all, folks! As you can see in this example, cnvrg truly is a full-stack data science solution with all the tools to operate the entire machine learning workflow.
+
+Make sure to check out some of our other tutorials to learn more about cnvrg using different use cases.
 
 == LINKS + RESOURCES
 
