@@ -13,11 +13,12 @@ Doc Writer <avishay.sebban@intel.com>
 // Uncomment next line to set page size (default is A4)
 //:pdf-page-size: Letter
 
-Workshop duration 45-55 min {empty}footnote:
+Workshop duration 45-55 min
 
 [square]
-* 15 overview
-* 30 min hands-on
+* 5 min - intro presentation
+* 10 min - Demo-overview
+* 30 min - hands-on
 
 
 == Introduction
@@ -30,7 +31,7 @@ cnvrg.io classic AI and Metaclodu provide everything needed to build and deploy 
 
 provides a hybrid-cloud, multi-cloud unified fabric for scalable and secure AI development. The AI ready infrastructure delivers best practices architecture to IT teams with container-based workflows, native Kubernetes and easily blends into existing IT ecosystems. Optimized XPUs in partnerships with Intel, Optimized GPUs in partnerships with NVIDIA, Optimized Storage and Infrastructure in partnership with RedHat, Dell EMC, and NetApp.
 
-A paragraph followed by an unordered list{empty}footnote:
+A paragraph followed by an unordered 
 
 [square]
 * item 1
