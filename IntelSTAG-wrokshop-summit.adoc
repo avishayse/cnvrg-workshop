@@ -13,7 +13,8 @@ Doc Writer <avishay.sebban@intel.com>
 // Uncomment next line to set page size (default is A4)
 //:pdf-page-size: Letter
 
-== Introduction
+
+== Registration and Introduction
 
 Workshop duration 45-55 min
 
@@ -30,21 +31,9 @@ cnvrg.io classic AI and Metaclod provide everything needed to build and deploy A
 
 provides a hybrid-cloud, multi-cloud unified fabric for scalable and secure AI development. The AI ready infrastructure delivers best practices architecture to IT teams with container-based workflows, native Kubernetes and easily blends into existing IT ecosystems. Optimized XPUs in partnerships with Intel, Optimized GPUs in partnerships with NVIDIA, Optimized Storage and Infrastructure in partnership with RedHat, Dell EMC, and NetApp.
 
-== Getting started
+== Datasets
 
-- Let’s begin by first logging into cnvrg. The lab assumes you already have access to a cnvrg environment and does not cover deployment. There is a video as well as documentation that can help you setup a cnvrg CORE deployment or sign up for a cloud account at https://cnvrg.io[Cnvrg.io]
-
-- Once logged in go ahead and create the, ML Pipeline with the LendingClub dataset Example Project at the prpojects page. You can create a new project and call this project anything you want if you desire to follow along but choose your own dataset. 
-
-image::/misc/example_proj.png[Sunset]
-
-image::/misc/lc.png[Sunset]
-
-- Verify that your project was created and there are files in the File System.
-
-image::/misc/lc-files.png[Sunset]
-
-- Now we can begin exploring the project.
+Usually, we would import a dataset before beginning to work on the Project. However, in this case, we will be using Keras to download the dataset within the project.
 
 == Projects
 
@@ -52,74 +41,35 @@ cnvrg simplifies ML workflows from end to end
 
 image::/misc/icons_projects.png[Sunset] 
 
-For starters, a cnvrg project is the space in which you hold everything related to a specific machine learning problem or domain. You work and collaborate on projects.
+For starters, a cnvrg project is the space in which you hold everything related to a specific machine learning problem or domain. You work and collaborate on projects. A project can include files (code), https://app.cnvrg.io/docs/core_concepts/workspaces.html[workspaces], https://app.cnvrg.io/docs/core_concepts/experiments.html[experiments], https://app.cnvrg.io/docs/core_concepts/flows.html[flows],  https://app.cnvrg.io/docs/core_concepts/apps.html[apps] and https://app.cnvrg.io/docs/core_concepts/dashboard.html#summary[dashboard],  https://app.cnvrg.io/docs/core_concepts/endpoints.html[serving], *artifacts*, *models* and even research interactive *papers*.
 
-image::/misc//main-projects.png[Sunset]
-
-A project can include files (code), https://app.cnvrg.io/docs/core_concepts/workspaces.html[workspaces], https://app.cnvrg.io/docs/core_concepts/experiments.html[experiments], https://app.cnvrg.io/docs/core_concepts/flows.html[flows],  https://app.cnvrg.io/docs/core_concepts/apps.html[apps] and https://app.cnvrg.io/docs/core_concepts/dashboard.html#summary[dashboard],  https://app.cnvrg.io/docs/core_concepts/endpoints.html[serving], *artifacts*, *models* and even research interactive *papers*.
-
-Create New Projects, Start from load yuor files into the platfrom and also creating new files, or import from github!
-
-image::/misc//projects00.png[Sunset]
+image::/misc//inside-project.png[Sunset]
 
 Read more about project in the docs https://app.cnvrg.io/docs/core_concepts/projects.html#creating-a-project[here]
 
-== Datasets
 
-Cnvrg datasets allow you to create, load, delete and version any kind of file automatically and easily. So you can interact with them later on in your cnvrg-IDE or local laptop and and later on on your experimnets,Flow etc. Your data is basically what do you define it to be, It can be a single file, binary file, it can be a folder structure containing thousands of files, and really what you define it to be.
+== Getting the project started
 
-You can drag and drop your files, and if this large dataset you can use our https://app.cnvrg.io/docs/core_concepts/python_sdk_v2.html[Setting up cnvrg2 cli] to upload your files. 
-see exmaple how to https://github.com/avishayse/cnvrg-workshop/blob/main/0-Setting-up-client-tools.adoc[1.Setting up cnvrg2 cli], https://github.com/avishayse/cnvrg-workshop/blob/main/1-Setting-up-datasets.adoc[2.upload the files here]
+On the website, navigate to the Projects tab
 
-Bring your own data
-~~~~~~~~~~~~~~~~~~~
+Welcome to the home of your code, experiments, flows and deployments. Here everything lives and works together.
 
-- Lets create new data bucket and add the file.
+- For this example, we’ll use the prebuilt example project. 
+  . On the top right, click *Example Projects*.
+  . Select *Text Classification with Keras and IMDB dataset.*
 
-  . Download this csv file from https://data.boston.gov/dataset/1391d199-08bb-4bd7-a2ce-ceabf4ad4f91/resource/c13199bf-49a1-488d-b8e9-55e49523ef81/download/tmpkhwk2w32.csv[here]
-  . Go *datasets* section, and create new datasset and given a *title* for it
-  . inside the DS, *Drag* the file into the browser, or by, *click to browse*
-  . once the file is up, click *upload*.
+image::/misc/example_proj.png[Sunset]
 
-Data versioning
-~~~~~~~~~~~~~~
+image::/misc/imdb.png[Sunset]
 
-one of the important things especially in data is the: *Data versioning*
+- Now you’ve created a cnvrg project titled imdb. The imdb project dashboard is displayed. Let’s have a closer look at what’s inside the project and files.
 
-Cnvrg data versioning control allows you to track your data every time it is changing.  That means that whenever you add, update, delete files to your datasets. cnvrg do commits for those changes.
-
-image::/misc//datasets.png[Sunset]
-
-cnvrg datasets uses an object store for the backend and allows you to host any kind of file with no limit to size or quantity, and of course you can always Isolate the data among other teams. 
-
-
-== Files
-
-Back to lending club project - cnvrg has inline support for rendering a viewing multiple file types
-
-cnvrg offers out-of-the-box version control for your project. With the simple drag-and-drop interface or the  https://app.cnvrg.io/docs/core_concepts/python_sdk_v2.html[cnvrgv2] CLI, you can have your project files (code, artifacts) automatically tracked and versioned.
-
-image::/misc//lc-dd.png[Sunset]
-
-
-Drop your first file localy on cnvrg
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-. Let adds two files into our filesystem. You can dowload or copy and creating new file with their name.
-- https://raw.githubusercontent.com/avishayse/cnvrg-workshop/main/misc/train.py[train.py]
-- https://raw.githubusercontent.com/avishayse/cnvrg-workshop/main/misc/predict.py[predicy.py]
-. Drag into our browser and add *commit message*, then go ahead and pres *Upload*. We gonna use them later on.
-
-
-cnvrg will automatically create new commits for experiments and workspaces syncs and keep track of all your projects' files. When connected to git, only the designated *output* folder will be synced and managed by cnvrg.
-
-image::/misc//lc-files-commits.png[Sunset]
-
-== Workspaces
+== Launching a Jupyter Workspace
 
 cnvrg.io has built-in support for JupyterLab, JupterLab on Spark, R Studio and Visual Studio Code to run on the platfrom. as well the ability to run code on your local IDE using the https://app.cnvrg.io/docs/core_concepts/python_sdk_v2.html[cnvrgv2-SDK] library.
 
 A cnvrg workspace is an interactive environment for developing and running code.
+
 
 Create your first workspace
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -133,29 +83,28 @@ Create your first workspace
 
 image::/misc//workspace.png[Sunset]
 
+This is how it looks:
+
+image::/misc//jupyter.png[Sunset]
+
 You can explore the files and even start editing and modifying them if you wish at this point.
 
 == Experiments
+
+Experiments are the core of every machine learning project. When building a model, it’s all about trying new ideas, testing new hypotheses, testing hyperparameters, and exploring different neural-network architecture.
 
 To run an experiment via the web, go to your project, click the Experiments tab and click New Experiment.
 
 cnvrg allows you to run experiments.
 An experiment can be any executable, written in any language: Python, R, Java, Scala and more. It can also be an existing Jupyter notebook.
 
-In this example, we’ll be training a text classification model using the IMDB dataset, which is a set of 50,000, highly polarized reviews from the Internet Movie Database. The model will be a simple binary classification model and if all goes according to plan, should be able to accept a review with a scode point. Our dataset has already been preprocessed and the written reviews translated into integers, where each integer corresponds with a word in a dictionary.
+Running an experiment
+^^^^^^^^^^^^^^^^^^^^^
 
-Run your first experiments
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-- Go ahead and launch your first workspace, click *“New Experiment”*
-  . input your Command to Execute:  *python3 train.py*
-  . Next, go to *Parameters* - this is where you can get more Detail for your experiments. 
-    if your if your script is designed to take *arguments as parameter*,provide override *key value*.
-    those will be passed to your script at runtime.
-  . Next *Optimization* -  you can also choose to set objectives and goals for optimization and *hyperparameters* tuning and cnvrg will then, actually manage that for you, and also display that all in the in the experiments panel as it runs.
-  . *Datasets* - this is where you can also now select a data set that you want to attach and use for this experiment if your experiment depends on a dataset that's been registered with converge then you are now able to actually specify.
-
-
-   
+- On your project’s sidebar, click Experiments, then click New Experiment. In the panel that appears:
+  . For *Command to Execute*, type in or select python3 train.py.
+  . For *Environment* > *Compute*, select large.
+  . Click *Run*.
     
 image::/misc//exp.png[Sunset]
 
