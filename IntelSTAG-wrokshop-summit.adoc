@@ -77,8 +77,9 @@ Bring your own data
 - Lets create new data bucket and add the file.
 
   . Download this csv file from https://data.boston.gov/dataset/1391d199-08bb-4bd7-a2ce-ceabf4ad4f91/resource/c13199bf-49a1-488d-b8e9-55e49523ef81/download/tmpkhwk2w32.csv[here]
-  . Drag the file into the browser, or by click to browse
-  . once the file is up, click upload.
+  . Go *datasets* section, and create new datasset and given a *title* for it
+  . inside the DS, *Drag* the file into the browser, or by, *click to browse*
+  . once the file is up, click *upload*.
 
 Data versioning
 ~~~~~~~~~~~~~~
@@ -103,6 +104,12 @@ image::/misc//lc-dd.png[Sunset]
 
 Drop your first file localy on cnvrg
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+. Let adds two files into our filesystem. You can dowload or copy and creating new file with their name.
+- https://raw.githubusercontent.com/avishayse/cnvrg-workshop/main/misc/train.py[train.py]
+- https://raw.githubusercontent.com/avishayse/cnvrg-workshop/main/misc/predict.py[predicy.py]
+. Drag into our browser and add *commit message*, then go ahead and pres *Upload*. We gonna use them later on.
+
 
 cnvrg will automatically create new commits for experiments and workspaces syncs and keep track of all your projects' files. When connected to git, only the designated *output* folder will be synced and managed by cnvrg.
 
@@ -135,9 +142,22 @@ To run an experiment via the web, go to your project, click the Experiments tab 
 cnvrg allows you to run experiments.
 An experiment can be any executable, written in any language: Python, R, Java, Scala and more. It can also be an existing Jupyter notebook.
 
+In this example, we’ll be training a text classification model using the IMDB dataset, which is a set of 50,000, highly polarized reviews from the Internet Movie Database. The model will be a simple binary classification model and if all goes according to plan, should be able to accept a review with a scode point. Our dataset has already been preprocessed and the written reviews translated into integers, where each integer corresponds with a word in a dictionary.
+
 Run your first experiments
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 - Go ahead and launch your first workspace, click *“New Experiment”*
+  . input your Command to Execute:  *python3 train.py*
+  . Next, go to *Parameters* - this is where you can get more Detail for your experiments. 
+    if your if your script is designed to take *arguments as parameter*,provide override *key value*.
+    those will be passed to your script at runtime.
+  . Next *Optimization* -  you can also choose to set objectives and goals for optimization and *hyperparameters* tuning and cnvrg will then, actually manage that for you, and also display that all in the in the experiments panel as it runs.
+  . *Datasets* - this is where you can also now select a data set that you want to attach and use for this experiment if your experiment depends on a dataset that's been registered with converge then you are now able to actually specify.
+
+
+   
+    
+image::/misc//exp.png[Sunset]
 
 == Flows
 
