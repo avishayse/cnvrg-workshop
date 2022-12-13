@@ -39,7 +39,7 @@ provides a hybrid-cloud, multi-cloud unified fabric for scalable and secure AI d
 
 == Datasets
 
-Usually, we would import a dataset before beginning to work on the Project. However, in this case, we will be using Keras to download the dataset within the project.
+Usually, we would import a dataset before beginning to work on the Project. However, in this lab, we will be using Keras to download the dataset within the project.
 
 == Projects
 
