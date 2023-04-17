@@ -1,9 +1,22 @@
+import os
 import tensorflow as tf
 
+os.environ['METAGPU_MAX_MEM']
+my_variable = os.environ.get('METAGPU_MAX_MEM')
+memory_limit = int(my_variable)  # Convert the string to an integer
+
 # Set the limit to GPU memory usage
-config = tf.compat.v1.ConfigProto()
-config.gpu_options.per_process_gpu_memory_fraction = 0.2  # Use 20% of GPU memory
-sess = tf.compat.v1.Session(config=config)
+gpus = tf.config.list_physical_devices('GPU')
+if gpus:
+    try:
+        # Set the memory limit for each GPU
+        for gpu in gpus:
+            tf.config.set_logical_device_configuration(
+                gpu,
+                [tf.config.LogicalDeviceConfiguration(memory_limit=memory_limit)])
+        print("GPU memory limit set successfully.")
+    except RuntimeError as e:
+        print("Error setting GPU memory limit:", e)
 
 # Load MNIST dataset
 mnist = tf.keras.datasets.mnist
