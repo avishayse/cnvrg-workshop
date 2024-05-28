@@ -1,7 +1,7 @@
 
 
 
-= Welcome to Cnvrg.io Intel STAG AI WORKSHOP
+= Welcome to Cnvrg.io AI WORKSHOP
 Doc Writer <avishay.sebban@intel.com>
 :reproducible:
 :listing-caption: Listing
